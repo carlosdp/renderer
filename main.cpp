@@ -1,7 +1,7 @@
 #include <iostream>
+#include <cstdlib>
 #include <GLFW/glfw3.h>
 #include "scene.hpp"
-#include "obj_import.hpp"
 
 int main(int argc, char** argv) {
 

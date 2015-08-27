@@ -1,4 +1,4 @@
-#include "obj_import.hpp"
+#include "scene.hpp"
 
 #include <iostream>
 #include <string>
@@ -12,7 +12,7 @@ void Scene::LoadOBJ(char *filepath) {
 
   if (!err.empty()) {
     std::cerr << err << std::endl;
-    exit(1);
+    return;
   }
 
   std::cout << "# of shapes : " << shapes.size() << std::endl;
