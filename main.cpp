@@ -1,12 +1,13 @@
 #include <iostream>
 #include <cstdlib>
 #include <GLFW/glfw3.h>
+#include <GL/glu.h>
 #include "scene.h"
 
 int main(int argc, char** argv) {
+  Scene scene;
 
   if (argc > 1) {
-    Scene scene;
     scene.LoadOBJ(argv[1]);
   }
 
@@ -35,7 +36,8 @@ int main(int argc, char** argv) {
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
+    /* glOrtho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f); */
+    gluPerspective(50.0, 1.0, 3.0, 7.0);
     glMatrixMode(GL_MODELVIEW);
 
     glLoadIdentity();

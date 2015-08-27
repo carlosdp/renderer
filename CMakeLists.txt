@@ -20,5 +20,5 @@ set(ADDITIONAL_LIBS
 
 add_executable(render scene.cpp tiny_obj_loader.cc main.cpp)
 target_link_libraries(render ${GLFW_STATIC_LIBRARIES})
-# target_link_libraries(Renderer ${OPENGL_LIBRARIES})
+target_link_libraries(render ${OPENGL_LIBRARIES})
 # target_link_libraries(Renderer ${ADDITIONAL_LIBS})

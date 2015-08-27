@@ -5,5 +5,5 @@ class Scene {
   public:
     std::vector<Model> models;
 
-    Scene LoadOBJ(char *filepath);
+    void LoadOBJ(char *filepath);
 };
