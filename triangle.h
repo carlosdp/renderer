@@ -1,4 +1,6 @@
+#include "vector.h"
+
 class Triangle {
   public:
-    float v1, v2, v3;
+    Vector3 v1, v2, v3;
 };

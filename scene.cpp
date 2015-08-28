@@ -20,9 +20,15 @@ void Scene::LoadOBJ(char *filepath) {
 
     for (int n = 0; n < shapes[i].mesh.indices.size(); n += 3) {
       Triangle triangle;
-      triangle.v1 = shapes[i].mesh.positions[shapes[i].mesh.indices[n]];
-      triangle.v2 = shapes[i].mesh.positions[shapes[i].mesh.indices[n+1]];
-      triangle.v3 = shapes[i].mesh.positions[shapes[i].mesh.indices[n+2]];
+      triangle.v1.x = shapes[i].mesh.positions[shapes[i].mesh.indices[n]];
+      triangle.v1.y = shapes[i].mesh.positions[shapes[i].mesh.indices[n]+1];
+      triangle.v1.z = shapes[i].mesh.positions[shapes[i].mesh.indices[n]+2];
+      triangle.v2.x = shapes[i].mesh.positions[shapes[i].mesh.indices[n+1]];
+      triangle.v2.y = shapes[i].mesh.positions[shapes[i].mesh.indices[n+1]+1];
+      triangle.v2.z = shapes[i].mesh.positions[shapes[i].mesh.indices[n+1]+2];
+      triangle.v3.x = shapes[i].mesh.positions[shapes[i].mesh.indices[n+2]];
+      triangle.v3.y = shapes[i].mesh.positions[shapes[i].mesh.indices[n+2]+1];
+      triangle.v3.z = shapes[i].mesh.positions[shapes[i].mesh.indices[n+2]+2];
       model.faces.push_back(triangle);
     }
 
