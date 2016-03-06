@@ -1,9 +1,9 @@
 #include <vector>
-#include "model.h"
+#include "mesh.h"
 
 class Scene {
   public:
-    std::vector<Model> models;
+    std::vector<Mesh*> meshes;
 
     void LoadOBJ(char *filepath);
 };

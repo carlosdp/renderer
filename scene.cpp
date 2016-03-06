@@ -16,30 +16,30 @@ void Scene::LoadOBJ(char *filepath) {
   }
 
   for (int i = 0; i < shapes.size(); i++) {
-    Model model;
+    Mesh *mesh = new Mesh();
 
-    for (int n = 0; n < shapes[i].mesh.indices.size(); n += 3) {
-      Triangle triangle;
-      triangle.v1.x = shapes[i].mesh.positions[shapes[i].mesh.indices[n]];
-      triangle.v1.y = shapes[i].mesh.positions[shapes[i].mesh.indices[n]+1];
-      triangle.v1.z = shapes[i].mesh.positions[shapes[i].mesh.indices[n]+2];
-      triangle.v2.x = shapes[i].mesh.positions[shapes[i].mesh.indices[n+1]];
-      triangle.v2.y = shapes[i].mesh.positions[shapes[i].mesh.indices[n+1]+1];
-      triangle.v2.z = shapes[i].mesh.positions[shapes[i].mesh.indices[n+1]+2];
-      triangle.v3.x = shapes[i].mesh.positions[shapes[i].mesh.indices[n+2]];
-      triangle.v3.y = shapes[i].mesh.positions[shapes[i].mesh.indices[n+2]+1];
-      triangle.v3.z = shapes[i].mesh.positions[shapes[i].mesh.indices[n+2]+2];
-      model.faces.push_back(triangle);
+    for (int n = 0; n < shapes[i].mesh.positions.size(); n+=3) {
+      mesh->vertices.push_back(Vector3(shapes[i].mesh.positions[n],
+                                      shapes[i].mesh.positions[n+1],
+                                      shapes[i].mesh.positions[n+2]));
     }
 
-    this->models.push_back(model);
+    for (int n = 0; n < shapes[i].mesh.indices.size(); n+=3) {
+      Triangle triangle;
+      triangle.mesh = mesh;
+      triangle.vertices[0] = shapes[i].mesh.indices[n];
+      triangle.vertices[1] = shapes[i].mesh.indices[n+1];
+      triangle.vertices[2] = shapes[i].mesh.indices[n+2];
+    }
+
+    this->meshes.push_back(mesh);
   }
 
 
   std::cout << "# of shapes : " << shapes.size() << std::endl;
   std::cout << "# of materials : " << materials.size() << std::endl;
 
-  std::cout << "# of shapes : " << this->models.size() << std::endl;
-  if (this->models.size() > 0)
-    std::cout << "# of faces : " << this->models[0].faces.size() << std::endl;
+  std::cout << "# of shapes : " << this->meshes.size() << std::endl;
+  if (this->meshes.size() > 0)
+    std::cout << "# of faces : " << this->meshes[0]->faces.size() << std::endl;
 }
