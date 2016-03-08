@@ -5,10 +5,12 @@
   #include <GL/glu.h>
 #endif
 
+#include "scene.h"
+
 class Window {
   public:
     bool initialize();
-    void render();
+    void render(Scene *scene);
 
   private:
     GLFWwindow* window;
